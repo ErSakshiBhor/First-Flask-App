@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    </head>
+    <body>
+        
+{% extends 'base.html' %}
+
+{% block containt %}
+<div class="body">
+    <div class="container my-3 d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card shadow-lg p-4 rounded-4" style="width: 400px; background: #fff;">
+            <h2 class="text-center text-dark fw-bold">Registration Form</h2>
+
+
+             <!-- ✅ Flash Messages (Add this part) -->
+             {% with messages = get_flashed_messages(with_categories=True) %}
+             {% if messages %}
+                 {% for category, message in messages %}
+                     <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                         {{ message }}
+                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                     </div>
+                 {% endfor %}
+             {% endif %}
+         {% endwith %}
+         <!-- ✅ End Flash Messages -->
+
+
+            <form method="post">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label fw-semibold">Email Address</label>
+                    <input type="email" name="username" class="form-control border-primary shadow-sm" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label fw-semibold">Password</label>
+                    <input type="password" name="password" class="form-control border-primary shadow-sm" id="exampleInputPassword1">
+                </div>
+                <p>
+                    <a href="/login">Already Register? Login</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    <a href="">Forget Password?</a>
+                </p>
+                <button type="submit" class="btn btn-dark w-100 fw-bold">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock containt %}
+</body>
+
+</html>

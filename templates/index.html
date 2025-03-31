@@ -1,0 +1,37 @@
+<html>
+    <body>
+            
+{% extends 'base.html' %}
+{% block containt %}
+<div class="container my-4">
+    <table class="table table-bordered table-hover text-center align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Username</th>
+          <th scope="col">Password</th>
+          <th scope="col">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in all_users  %}
+        <tr>
+            <!-- to give proper indexing -->
+          <th scope="row">{{loop.index}}</th>   
+          <td>{{user.username}}</td>
+          <td>{{user.password}}</td>
+          <td>
+            <a href="/update/{{user.sno}}" class="btn btn-dark">Update</a>
+            <a href="/delete/{{user.sno}}" class="btn btn-danger">Delete</a>
+
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  
+{% endblock containt %}
+</body>
+</html>
